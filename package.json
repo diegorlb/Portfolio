@@ -6,7 +6,8 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
-    "dev": "next dev"
+    "dev": "next dev",
+    "test": "echo 1"
   },
   "dependencies": {
     "next": "^10.0.8",
