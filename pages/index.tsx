@@ -18,12 +18,14 @@ const Modal = styled.div`
 `
 
 const Text = styled.p`
-  font-size: 32px;
+  font-size: 2rem;
+  font-weight: 700;
   font-family: 'Space Grotesk', sans-serif;
 `
 
 const SubText = styled.p`
-  font-size: 19px;
+  font-size: 1.5rem;
+  font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
 `
 
