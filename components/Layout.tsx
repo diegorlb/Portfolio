@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 
@@ -13,7 +13,19 @@ type LayoutProps = {
   title: string
 }
 
+let hydrated = false
+
 export const Layout: FunctionComponent<LayoutProps> = ({ children,  title }) => {
+  const hydrate = useRef<boolean>(false)
+  const [, trigger] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (hydrate['current']) return
+    hydrate['current'] = true
+    hydrated = true
+    trigger(true)
+  }, [])
+
   return (
     <>
       <Head>
@@ -34,7 +46,7 @@ export const Layout: FunctionComponent<LayoutProps> = ({ children,  title }) => 
 
           <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&family=Space+Grotesk:wght@400;700&display=swap"
-            media="print" onload="this.media='all'" />
+            media={!hydrated ? 'print' : 'all'} />
       </Head>
       <LayoutWrapper>
         {children}
