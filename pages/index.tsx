@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
+import { theme } from 'styled-tools'
 
 import { Layout } from '../components/Layout'
+import { Navbar } from '../components/Navbar'
 
 const Modal = styled.div`
   background-color: #EEF;
@@ -19,19 +21,20 @@ const Modal = styled.div`
 
 const Text = styled.p`
   font-size: 2rem;
-  font-weight: 700;
-  font-family: 'Space Grotesk', sans-serif;
+  font-weight: ${theme('fonts.type.Bold')};
+  font-family: ${theme('fonts.type.Grotesk')};
 `
 
 const SubText = styled.p`
   font-size: 1.5rem;
-  font-weight: 300;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: ${theme('fonts.weight.light')};
+  font-family: ${theme('fonts.type.Source')};
 `
 
 const Index: FunctionComponent = () => {
   return (
     <Layout title={'Index'}>
+      <Navbar />
       <Modal>
         <Text>Site Underconstruction</Text>
         <SubText>Yeah, I'm working on it...</SubText>
