@@ -73,11 +73,11 @@ const MobileLinksContainerAnimation = {
   visible: {
     display: 'block',
   },
-  hidden: (length) => ({
+  hidden: (length: number) => ({
     display: 'none',
     transition: {
-      delay: length * 0.25,
-    }
+      delay: length * 0.15,
+    },
   })
 }
 
@@ -91,8 +91,8 @@ const MobileLinksAnimation = {
   hidden: ({ index, length }) => ({
     opacity: 0,
     transition: {
-      delay: (length - index) * 0.25
-    }
+      delay: (length - index) * 0.15,
+    },
   })
 }
 
@@ -119,7 +119,7 @@ export const ResponsiveMenu: FunctionComponent = () => {
             variants={MobileLinksAnimation}
             animate={active ? 'visible' : 'hidden'}
             custom={{ index, length }}>
-            <a href={path}>{key}</a>
+            <a href={path} onClick={() => setActive(false)}>{key}</a>
           </MobileLinkContainer>
         )
       })}

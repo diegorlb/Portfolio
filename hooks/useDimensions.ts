@@ -7,14 +7,14 @@ type DimensionsType = {
 
 export default function useDimensions() {
   const [dimensions, setDimensions] = useState<DimensionsType>({
-    width: 1200,
-    height: 900,
+    width: 450,
+    height: 800,
   })
 
   useEffect(() => {
     const handler = () => setDimensions({ width: window.innerWidth, height: window.innerHeight })
     handler()
-    
+
     window.addEventListener('resize', handler)
 
     return () => window.removeEventListener('resize', handler)

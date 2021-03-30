@@ -3,6 +3,8 @@ import Head from 'next/head'
 import styled from 'styled-components'
 
 import useMounted from '../hooks/useMounted'
+import { Footer } from './Footer'
+import { Navbar } from './Navbar'
 
 const LayoutWrapper = styled.div`
   background: linear-gradient(0deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
@@ -11,6 +13,17 @@ const LayoutWrapper = styled.div`
   position: absolute;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const MainContainer = styled.div`
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export type LayoutProps = {
@@ -50,7 +63,11 @@ export const Layout: FunctionComponent<LayoutProps> = ({ children, title }) => {
         </noscript>
       </Head>
       <LayoutWrapper>
-        {children}
+        <Navbar />
+        <MainContainer>
+          {children}
+        </MainContainer>
+        <Footer />
       </LayoutWrapper>
     </>
   )
