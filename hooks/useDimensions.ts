@@ -13,7 +13,6 @@ export default function useDimensions() {
 
   useEffect(() => {
     const handler = () => setDimensions({ width: window.innerWidth, height: window.innerHeight })
-    
     handler()
     
     window.addEventListener('resize', handler)

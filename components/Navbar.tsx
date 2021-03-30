@@ -4,21 +4,22 @@ import { theme } from 'styled-tools'
 import { ResponsiveMenu } from './ResponsiveMenu'
 
 const NavbarContainer = styled.div`
-  border: 1px solid red;
   height: 64px;
   width: 100%;
+  position: relative;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   padding: 0 32px;
 
   & > div:last-child {
-    border: 1px solid red;
     margin-left: auto;
   }
 `
 
 const NameContainer = styled.div`
   &, &:before, &:after {
+    height: 32px;
     color: white;
     font-size: 24px;
     font-weight: ${theme('fonts.weight.bold')};
