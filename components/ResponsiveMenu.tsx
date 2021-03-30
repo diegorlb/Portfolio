@@ -40,6 +40,7 @@ const DesktopLinkContainer = styled(LinkContainer)`
 `
 
 const MobileLinkContainer = styled(LinkContainer)`
+  opacity: 0;
   text-align: right;
   margin-right: 32px;
   margin-bottom: 8px;
@@ -59,6 +60,7 @@ const MobileButtonContainer = styled.div`
 `
 
 const MobileLinksContainer = styled(motion.div)`
+  display: none;
   position: absolute;
   width: 100%;
   height: auto;
@@ -69,7 +71,7 @@ const MobileLinksContainer = styled(motion.div)`
 
 const MobileLinksContainerAnimation = {
   visible: {
-    display: 'initial',
+    display: 'block',
   },
   hidden: (length) => ({
     display: 'none',
@@ -88,7 +90,6 @@ const MobileLinksAnimation = {
   }),
   hidden: ({ index, length }) => ({
     opacity: 0,
-    height: 0,
     transition: {
       delay: (length - index) * 0.25
     }
