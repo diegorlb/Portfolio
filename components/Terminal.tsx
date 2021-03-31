@@ -1,99 +1,26 @@
-import React, { FunctionComponent, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
-import { prop, theme } from 'styled-tools'
+import React, { FunctionComponent, useState, useMemo } from 'react'
 
 import { TerminalData } from '../data/TerminalData'
 
-const TerminalContainer = styled.div`
-  width: 80%;
-  max-width: 700px;
-  height: 450px;
-`
+import {
+  TerminalContainer,
+  TitleBarContainer,
+  Spheres,
+  ConsoleContainer,
+  EntryContainer,
+  PathWrapper,
+  Blinker
+} from './styled/Terminal.styled'
 
-const TitleBarContainer = styled.div`
-  background-color: #373B41;
-  width: 100%;
-  height: 24px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 6px;
-  cursor: move;
-`
-
-const Spheres = styled.div`
-  background-color: ${prop('color')};
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-`
-
-const ConsoleContainer = styled.div`
-  background-color: #1D1F21;
-  width: 100%;
-  height: calc(100% - 24px);
-  color: white;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  padding: 2px 4px;
-  cursor: text;
-`
-
-const EntryContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const Text = styled.p`
-  font-size: 10pt;
-  font-weight: ${theme('fonts.weight.light')};
-  font-family: ${theme('fonts.type.Source')};
-`
-
-const Path = styled(Text)`
-  margin: 0;
-  margin-bottom: 2px;
-  margin-right: 4px;
-  color: #A0B1D2;
-  min-width: 105px;
-  
-  &:before {
-    content: 'root@diegorlb';
-    color: #5FA74D;
-  }
-`
-
-const TerminalText = styled(Text)`
-  margin: 0;
-`
-
-const BlinkAnimation = keyframes`
-  0% { opacity: 0 }
-	49% { opacity: 0 }
-	50% { opacity: 1 }
-`
-
-const Blinker = styled(Text)`
-  margin: 0;
-  animation: ${BlinkAnimation} 1s infinite;
-`
+import { CompoundTerminalEntry } from './CompundTerminalEntry'
+import { motion } from 'framer-motion'
 
 export const Terminal: FunctionComponent = () => {
-  const Request = ({ cmd }) => (
-    <EntryContainer>
-      <Path>: ~/$</Path>
-      <TerminalText>{cmd}</TerminalText>
-    </EntryContainer>
-  )
-  const Response = ({ txt }) => (
-    <EntryContainer>
-      <TerminalText>{txt}</TerminalText>
-    </EntryContainer>
-  )
+  const Delays = useMemo(() => TerminalData.map((_, i, arr) => {
+    return arr.slice(0, i).reduce((acc, { cmd }) => acc + 0.1 * cmd.length, 0.45 * i)
+  }), [])
+
+  const TotalDelay = useMemo(() => Delays.reduce((acc, delay) => acc + delay, 0), [])
 
   return (
     <TerminalContainer>
@@ -103,16 +30,21 @@ export const Terminal: FunctionComponent = () => {
         <Spheres color={'#A54242'} />
       </TitleBarContainer>
       <ConsoleContainer>
-        {
-          TerminalData.map(({ cmd, txt }, index) => {
-            return [
-              <Request key={`cmd${index}`} cmd={cmd} />,
-              <Response key={`txt${index}`} txt={txt} />
-            ]
-          })
-        }
-        <EntryContainer>
-          <Path>: ~/$</Path>
+        {TerminalData.map(({ cmd, txt }, index) => {
+          return <CompoundTerminalEntry key={index} cmd={cmd} txt={txt} delay={Delays[index]} />
+        })}
+        <EntryContainer
+          as={motion.div}
+          initial={{
+            display: 'none'
+          }}
+          animate={{
+            display: 'flex',
+            transition: {
+              delay: TotalDelay
+            }
+          }}>
+          <PathWrapper>: ~/$</PathWrapper>
           <Blinker>&#124;</Blinker>
         </EntryContainer>
       </ConsoleContainer>

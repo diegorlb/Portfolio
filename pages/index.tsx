@@ -18,7 +18,9 @@ const Index: FunctionComponent = () => {
     return () => window.removeEventListener('hashchange', handler)
   }, [])
 
-  console.log(hash)
+  useEffect(() => {
+    console.log(hash)
+  }, [hash])
 
   return (
     <Layout title={'Index'}>

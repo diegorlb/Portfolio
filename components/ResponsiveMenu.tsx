@@ -1,73 +1,20 @@
 import { FunctionComponent, useState, useMemo } from 'react'
 import styled from 'styled-components'
 import { theme } from 'styled-tools'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
 
 import useDimensions from '../hooks/useDimensions'
 import { NavbarLinks } from '../data/NavbarLinks'
-
-const ResponsiveMenuContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const LinkContainer = styled.div`
-  & > a {
-    color: white;  
-    font-size: 20px;
-    font-weight: ${theme('fonts.weight.regular')};
-    font-family: ${theme('fonts.type.Grotesk')};
-
-    &:link, &:visited, &:active {
-      color: white;
-      text-decoration: none;
-    }
-  }
-`
-
-const DesktopLinkContainer = styled(LinkContainer)`
-  margin: 0 16px;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-`
-
-const MobileLinkContainer = styled(LinkContainer)`
-  opacity: 0;
-  text-align: right;
-  margin-right: 32px;
-  margin-bottom: 8px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`
-
-const MobileButtonContainer = styled.div`
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-`
-
-const MobileLinksContainer = styled(motion.div)`
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: auto;
-  top: 64px;
-  left: 0;
-  z-index: 1;
-`
+import {
+  ResponsiveMenuContainer,
+  DesktopLinkContainer,
+  MobileLinkContainer,
+  MobileButtonContainer,
+  MobileLinksContainer,
+} from './styled/ResponsiveMenu.styled'
 
 const MobileLinksContainerAnimation = {
   visible: {
