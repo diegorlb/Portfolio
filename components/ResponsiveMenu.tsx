@@ -1,6 +1,6 @@
 import { FunctionComponent, useState, useMemo } from 'react'
-import styled from 'styled-components'
-import { theme } from 'styled-tools'
+
+import Link from 'next/link'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -14,6 +14,7 @@ import {
   MobileLinkContainer,
   MobileButtonContainer,
   MobileLinksContainer,
+  LinkWrapper,
 } from './styled/ResponsiveMenu.styled'
 
 const MobileLinksContainerAnimation = {
@@ -45,7 +46,7 @@ const MobileLinksAnimation = {
 
 export const ResponsiveMenu: FunctionComponent = () => {
   const [active, setActive] = useState<boolean>(false)
-  const { width } = useDimensions()
+  const { isMobile } = useDimensions()
 
   const MobileButton = useMemo(() => (
     <MobileButtonContainer onClick={() => setActive(prev => !prev)}>
@@ -66,7 +67,9 @@ export const ResponsiveMenu: FunctionComponent = () => {
             variants={MobileLinksAnimation}
             animate={active ? 'visible' : 'hidden'}
             custom={{ index, length }}>
-            <a href={path} onClick={() => setActive(false)}>{key}</a>
+            <Link href={path} passHref>
+              <LinkWrapper onClick={() => setActive(false)}>{key}</LinkWrapper>
+            </Link>
           </MobileLinkContainer>
         )
       })}
@@ -76,15 +79,17 @@ export const ResponsiveMenu: FunctionComponent = () => {
   const LinksWrapper = useMemo(() => NavbarLinks.map(({ key, path }, index) => {
     return (
       <DesktopLinkContainer key={index}>
-        <a href={path}>{key}</a>
+        <Link href={path} passHref>
+          <LinkWrapper>{key}</LinkWrapper>
+        </Link>
       </DesktopLinkContainer>
     )
   }), [])
-
+  
   return (
     <>
       <ResponsiveMenuContainer>
-        {width < 640 ? MobileButton : LinksWrapper}
+        {isMobile ? MobileButton : LinksWrapper}
         {MobileLinks}
       </ResponsiveMenuContainer>
     </>

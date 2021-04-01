@@ -7,21 +7,7 @@ export const ResponsiveMenuContainer = styled.div`
   flex-direction: row;
 `
 
-const LinkContainer = styled.div`
-  & > a {
-    color: white;  
-    font-size: 20px;
-    font-weight: ${theme('fonts.weight.regular')};
-    font-family: ${theme('fonts.type.Grotesk')};
-
-    &:link, &:visited, &:active {
-      color: white;
-      text-decoration: none;
-    }
-  }
-`
-
-export const DesktopLinkContainer = styled(LinkContainer)`
+export const DesktopLinkContainer = styled.div`
   margin: 0 16px;
 
   &:first-child {
@@ -33,7 +19,7 @@ export const DesktopLinkContainer = styled(LinkContainer)`
   }
 `
 
-export const MobileLinkContainer = styled(LinkContainer)`
+export const MobileLinkContainer = styled.div`
   opacity: 0;
   text-align: right;
   margin-right: 32px;
@@ -41,6 +27,18 @@ export const MobileLinkContainer = styled(LinkContainer)`
 
   &:last-child {
     margin-bottom: 0;
+  }
+`
+
+export const LinkWrapper = styled.a`
+  color: white;  
+  font-size: 20px;
+  font-weight: ${theme('fonts.weight.regular')};
+  font-family: ${theme('fonts.type.Grotesk')};
+
+  &:link, &:visited, &:active {
+    color: white;
+    text-decoration: none;
   }
 `
 

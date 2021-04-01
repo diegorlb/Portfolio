@@ -1,30 +1,12 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
-
-import { useRouter } from 'next/router'
+import React, { FunctionComponent } from 'react'
 
 import { Layout } from '../components/Layout'
-import { Terminal } from '../components/Terminal'
+import { TerminalWrapper } from '../components/TerminalWrapper'
 
 const Index: FunctionComponent = () => {
-  const [hash, setHash] = useState<string>('')
-
-  useEffect(() => {
-    const handler = () => setHash(window.location.hash)
-
-    handler()
-
-    window.addEventListener('hashchange', handler)
-
-    return () => window.removeEventListener('hashchange', handler)
-  }, [])
-
-  useEffect(() => {
-    console.log(hash)
-  }, [hash])
-
   return (
-    <Layout title={'Index'}>
-      <Terminal />
+    <Layout title={'Home'}>
+      <TerminalWrapper />
     </Layout>
   )
 }

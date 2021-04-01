@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, Dispatch, SetStateAction } from 'react'
 
-import { EntryContainer, PathWrapper, TerminalText, Blinker } from './styled/Terminal.styled'
+import { EntryContainer, PathWrapper, TerminalText, Blinker } from './styled/TerminalWrapper.styled'
 import useInterval from '../hooks/useInterval'
 
 export type AnimatedRequestProps = {

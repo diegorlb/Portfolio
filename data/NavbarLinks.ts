@@ -1,14 +1,14 @@
 export const NavbarLinks = [
   {
     key: 'home',
-    path: '#',
+    path: '/',
   },
   {
     key: 'projects',
-    path: '#projects',
+    path: '/projects',
   },
   {
     key: 'contact',
-    path: '#contact',
+    path: '/contact',
   },
 ]

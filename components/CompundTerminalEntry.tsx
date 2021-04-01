@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
-import styled from 'styled-components'
 
 import { AnimatedRequest } from './AnimatedRequest'
-import { EntryContainer, TerminalText } from './styled/Terminal.styled'
+import { EntryContainer, TerminalText } from './styled/TerminalWrapper.styled'
 import { motion } from 'framer-motion'
 
 export type CompoundTerminalEntryProps = {
