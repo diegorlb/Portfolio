@@ -25,14 +25,22 @@ export const Project: FunctionComponent<ProjectProps> = ({ name, description, la
   const Animation = {
     variants: {
       show: (i: number) => ({
+        x: 0,
         opacity: 1,
         transition: {
           delay: i * 0.15,
         }
       }),
+      hidden: {
+        x: 25,
+      }
     },
+    initial: 'hidden',
     animate: 'show',
     custom: index,
+    whileHover: {
+      y: -5,
+    }
   }
 
   return (

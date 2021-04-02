@@ -10,7 +10,7 @@ export type LayoutProps = {
   title: string
 }
 
-const link = 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&family=Space+Grotesk:wght@300;400;700&display=swap'
+const link = 'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&Source+Sans+Pro:wght@300;400;700&family=Space+Grotesk:wght@300;400;700&display=swap'
 
 export const Layout: FunctionComponent<LayoutProps> = ({ children, title }) => {
   const mounted = useMounted()

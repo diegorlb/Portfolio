@@ -8,6 +8,7 @@ export const ResponsiveMenuContainer = styled.div`
 `
 
 export const DesktopLinkContainer = styled.div`
+  display: none;
   margin: 0 16px;
 
   &:first-child {
@@ -16,6 +17,10 @@ export const DesktopLinkContainer = styled.div`
 
   &:last-child {
     margin-right: 0;
+  }
+
+  @media (min-width: 640px) {
+    display: block;
   }
 `
 
@@ -49,6 +54,10 @@ export const MobileButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
+
+  @media (min-width: 640px) {
+    display: none;
+  }
 `
 
 export const MobileLinksContainer = styled(motion.div)`

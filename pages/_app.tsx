@@ -1,5 +1,9 @@
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
+
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -16,6 +20,7 @@ const theme = {
     type: {
       Grotesk: "'Space Grotesk', sans-serif",
       Source: "'Source Sans Pro', sans-serif",
+      SourcePro: "'Source Code Pro', monospaced",
     },
     weight: {
       light: 300,

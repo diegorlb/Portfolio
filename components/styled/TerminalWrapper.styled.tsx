@@ -1,19 +1,13 @@
 import styled, { keyframes } from 'styled-components'
 import { theme } from 'styled-tools'
 
-export const TerminalWindow = styled.div`
-  width: 80%;
+import { Window, ProgramContainer } from './Global.styled'
+
+export const TerminalWindow = styled(Window)`
   max-width: 700px;
-  height: 450px;
 `
 
-export const ConsoleContainer = styled.div`
-  background-color: #1D1F21;
-  width: 100%;
-  height: calc(100% - 24px);
-  color: white;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+export const ConsoleContainer = styled(ProgramContainer)`
   padding: 2px 4px;
   cursor: text;
 `

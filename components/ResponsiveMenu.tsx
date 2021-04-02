@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
 
-import useDimensions from '../hooks/useDimensions'
 import { NavbarLinks } from '../data/NavbarLinks'
 import {
   ResponsiveMenuContainer,
@@ -46,7 +45,6 @@ const MobileLinksAnimation = {
 
 export const ResponsiveMenu: FunctionComponent = () => {
   const [active, setActive] = useState<boolean>(false)
-  const { isMobile } = useDimensions()
 
   const MobileButton = useMemo(() => (
     <MobileButtonContainer onClick={() => setActive(prev => !prev)}>
@@ -85,11 +83,12 @@ export const ResponsiveMenu: FunctionComponent = () => {
       </DesktopLinkContainer>
     )
   }), [])
-  
+
   return (
     <>
       <ResponsiveMenuContainer>
-        {isMobile ? MobileButton : LinksWrapper}
+        {MobileButton}
+        {LinksWrapper}
         {MobileLinks}
       </ResponsiveMenuContainer>
     </>
