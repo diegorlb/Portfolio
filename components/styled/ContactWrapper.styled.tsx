@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { theme } from 'styled-tools'
 
 import { Window, ProgramContainer } from './Global.styled'
-import { theme } from 'styled-tools'
+import { motion } from 'framer-motion'
 
 export const ContactWindow = styled(Window)`
   max-width: 650px;
@@ -11,14 +12,14 @@ export const ContactContainer = styled(ProgramContainer)`
   padding: 8px;
 `
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled(motion.div)`
   margin-top: 20px;
   margin-bottom: 20px;
   border-left: 2px solid #535353;
   padding-left: 4px;
 
   @media (min-width: 640px) {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
 `
 
@@ -47,7 +48,7 @@ export const ExtraText = styled.p`
   }
 `
 
-export const FormWrapper = styled.form`
+export const FormWrapper = styled(motion.form)`
   width: 100%;
   height: auto;
   display: inline-block;

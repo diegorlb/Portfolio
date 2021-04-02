@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { prop } from 'styled-tools'
+import { motion } from 'framer-motion'
 
-export const Window = styled.div`
+export const Window = styled(motion.div)`
   width: 80%;
   height: 450px;
 `

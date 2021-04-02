@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import { motion } from 'framer-motion'
 
 import { TerminalData } from '../data/TerminalData'
 
@@ -22,14 +21,17 @@ export const TerminalWrapper: FunctionComponent = () => {
   const TotalDelay = useMemo(() => Delays.reduce((acc, delay) => acc + delay, 0), [])
 
   return (
-    <TerminalWindow>
+    <TerminalWindow
+      layoutId={'TerminalWindow'}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}>
       <TitleBar />
       <ConsoleContainer>
         {TerminalData.map(({ cmd, txt }, index) => {
           return <CompoundTerminalEntry key={index} cmd={cmd} txt={txt} delay={Delays[index]} />
         })}
         <EntryContainer
-          as={motion.div}
           initial={{
             display: 'none'
           }}

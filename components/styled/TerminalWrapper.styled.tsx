@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components'
 import { theme } from 'styled-tools'
 
 import { Window, ProgramContainer } from './Global.styled'
+import { motion } from 'framer-motion'
 
 export const TerminalWindow = styled(Window)`
   max-width: 700px;
@@ -12,7 +13,7 @@ export const ConsoleContainer = styled(ProgramContainer)`
   cursor: text;
 `
 
-export const EntryContainer = styled.div`
+export const EntryContainer = styled(motion.div)`
   display: flex;
   flex-direction: row;
 `

@@ -1,5 +1,7 @@
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
+import { AnimateSharedLayout } from 'framer-motion'
+
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
@@ -32,11 +34,11 @@ const theme = {
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <AnimateSharedLayout>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </AnimateSharedLayout>
   )
 }

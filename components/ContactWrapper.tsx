@@ -16,6 +16,24 @@ import {
 } from './styled/ContactWrapper.styled'
 import { TitleBar } from './TitleBar'
 
+const Animation = {
+  variants: {
+    show: (i: number) => ({
+      x: 0,
+      opacity: 1,
+      transition: {
+        delay: i * 0.15 + 0.5,
+      }
+    }),
+    hidden: {
+      opacity: 0,
+      x: 25,
+    }
+  },
+  initial: 'hidden',
+  animate: 'show',
+}
+
 export const ContactWrapper: FunctionComponent = () => {
   const form = useRef<HTMLFormElement>()
 
@@ -29,14 +47,18 @@ export const ContactWrapper: FunctionComponent = () => {
   }, [form])
 
   return (
-    <ContactWindow>
+    <ContactWindow
+      layoutId={'ContactWindow'}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}>
       <TitleBar />
       <ContactContainer>
-        <TitleContainer>
+        <TitleContainer {...Animation} custom={0}>
           <TitleText>Let's get in touch!</TitleText>
           <ExtraText>{ExtraTextData}</ExtraText>
         </TitleContainer>
-        <FormWrapper ref={form} onSubmit={sendCallback}>
+        <FormWrapper ref={form} onSubmit={sendCallback} {...Animation} custom={1}>
           <InputsContainer>
             {ContactData.map((value, index) => {
               if (typeof value === 'string') return <Text key={index}>{value}</Text>
