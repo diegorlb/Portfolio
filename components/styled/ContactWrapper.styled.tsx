@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { theme } from 'styled-tools'
+import styled, { css } from 'styled-components'
+import { theme, ifProp } from 'styled-tools'
 
 import { Window, ProgramContainer } from './Global.styled'
 import { motion } from 'framer-motion'
@@ -62,10 +62,10 @@ export const InputsContainer = styled.div`
 export const Text = styled.p`
   color: #e9e9e9;
   display: inline;
-  height: 33px;
-  line-height: 33px;
+  height: 28px;
+  line-height: 28px;
   margin: 0;
-  font-size: 20px;
+  font-size: 16pt;
   font-family: ${theme('fonts.type.SourcePro')};
   font-weight: ${theme('fonts.weight.bold')};
 `
@@ -75,7 +75,7 @@ export const FieldContainer = styled.input`
   padding: 0 4px;
   color: #e9e9e9;
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 12pt;
   font-family: ${theme('fonts.type.SourcePro')};
   font-weight: ${theme('fonts.weight.bold')};
   border: none;
@@ -118,4 +118,13 @@ export const SubmitButton = styled.button`
   &:hover {
     transform: translateY(-5px);
   }
+`
+
+export const LoadingContainer = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `

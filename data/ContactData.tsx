@@ -5,13 +5,13 @@ export const ExtraTextData = `
 
 export const ContactData = [
   'Hello, Diego! My name is  ',
-  { id: 'name', placeholder: 'Your Full Name', type: 'text', },
+  { id: 'name', placeholder: 'Your Full Name', type: 'text', required: true, },
   ' and I have a ',
-  { id: 'work', placeholder: 'Website, Job, Idea, etc.', type: 'text', },
+  { id: 'work', placeholder: 'Website, Job, Idea, etc.', type: 'text', required: true, },
   ' that needs help.',
   0,
   'You can reach me at ',
-  { id: 'email', placeholder: 'Your email address', type: 'email', },
+  { id: 'email', placeholder: 'Your email address', type: 'email', required: true, },
   ' or ',
   { id: 'number', placeholder: 'Your phone number', type: 'tel', },
   ' to talk and get things started.'

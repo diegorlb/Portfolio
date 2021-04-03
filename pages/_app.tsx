@@ -1,3 +1,4 @@
+import { AppProps } from 'next/app'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
 import { AnimateSharedLayout } from 'framer-motion'
@@ -32,7 +33,7 @@ const theme = {
   }
 }
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <AnimateSharedLayout>
       <GlobalStyle />

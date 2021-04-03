@@ -1,4 +1,7 @@
-import React, { FunctionComponent, useRef, useCallback, FormEvent } from 'react'
+import React, { FunctionComponent, useRef, useCallback, FormEvent, useState } from 'react'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner, faCheckCircle, faCross } from '@fortawesome/free-solid-svg-icons'
 
 import { ExtraTextData, ContactData } from '../data/ContactData'
 
@@ -13,14 +16,16 @@ import {
   FieldContainer,
   SubmitButton,
   ExtraText,
+  LoadingContainer,
 } from './styled/ContactWrapper.styled'
 import { TitleBar } from './TitleBar'
+import { useAPI, InfoType } from '../hooks/useAPI'
 
 const Animation = {
   variants: {
     show: (i: number) => ({
-      x: 0,
       opacity: 1,
+      x: 0,
       transition: {
         delay: i * 0.15 + 0.5,
       }
@@ -31,20 +36,32 @@ const Animation = {
     }
   },
   initial: 'hidden',
-  animate: 'show',
 }
 
 export const ContactWrapper: FunctionComponent = () => {
+  const { sendInfoData } = useAPI()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [status, setStatus] = useState<number>(0)
   const form = useRef<HTMLFormElement>()
 
   const sendCallback = useCallback((e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const inputs = Array.from(form['current'])
-    inputs.forEach((input) => {
-      if (!input.id) return
-      console.log((input as HTMLInputElement).value)
-    })
+    const inputs = Array.from(form['current']).reduce((acc, input) => {
+      if (!input.id) return acc
+      acc[input.id] = (input as HTMLInputElement).value
+      return acc
+    }, {})
+    setLoading(true)
+    sendInfoData(inputs as InfoType)
+      .then(() => setStatus(1), () => setStatus(2))
+      .catch(() => setStatus(2))
   }, [form])
+
+  const IconSelector = [
+    faSpinner,      //Status = 0
+    faCheckCircle,  //Status = 1
+    faCross,        //Status = 2
+  ]
 
   return (
     <ContactWindow
@@ -54,11 +71,11 @@ export const ContactWrapper: FunctionComponent = () => {
       transition={{ delay: 0.2 }}>
       <TitleBar />
       <ContactContainer>
-        <TitleContainer {...Animation} custom={0}>
+        <TitleContainer {...Animation} animate={loading ? 'hidden' : 'show'} custom={0}>
           <TitleText>Let's get in touch!</TitleText>
           <ExtraText>{ExtraTextData}</ExtraText>
         </TitleContainer>
-        <FormWrapper ref={form} onSubmit={sendCallback} {...Animation} custom={1}>
+        <FormWrapper ref={form} onSubmit={sendCallback} {...Animation} animate={loading ? 'hidden' : 'show'} custom={1}>
           <InputsContainer>
             {ContactData.map((value, index) => {
               if (typeof value === 'string') return <Text key={index}>{value}</Text>
@@ -71,6 +88,9 @@ export const ContactWrapper: FunctionComponent = () => {
           </InputsContainer>
           <SubmitButton>Send Information</SubmitButton>
         </FormWrapper>
+        <LoadingContainer {...Animation} animate={loading ? 'show' : 'hidden'} custom={2}>
+          <FontAwesomeIcon icon={IconSelector[status]} spin={!status} size={'3x'} />
+        </LoadingContainer>
       </ContactContainer>
     </ContactWindow>
   )
