@@ -11,6 +11,7 @@ export const ProjectsContainer = styled(ProgramContainer)`
   overflow: hidden auto;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
 
   & > div { 
     width: 100%;

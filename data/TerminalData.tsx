@@ -9,8 +9,6 @@ export const TerminalData = [
       <Fragment key={'0102'}>&emsp;init&emsp;&emsp;&ensp;&nbsp;Activates presentation.</Fragment>,
       <br key={'0103'}/>,
       <Fragment key={'0104'}>&emsp;skills&emsp;&emsp;Show skills.</Fragment>,
-      <br key={'0105'}/>,
-      <Fragment key={'0106'}>&emsp;social&emsp;&nbsp;&nbsp;&nbsp;WIP</Fragment>
     ],
   },
   {
@@ -21,7 +19,7 @@ export const TerminalData = [
       'Hello there!',
       <br key={'0202'} />,
       `Nice to meet you, my name is Diego Rodríguez.
-      I'm a nineteen years old Javascript and Typescript developer from Buenos Aires, Argentina.
+      I'm a nineteen years old, Junior Javascript and Typescript Developer from Buenos Aires, Argentina.
       I enjoy coding whatever idea or project crosses my mind.
       I plan to expand my knowledge in programming, constantly improving.`,
     ]
