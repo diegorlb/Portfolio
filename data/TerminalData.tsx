@@ -35,10 +35,4 @@ export const TerminalData = [
       NodeJS, Fastify, Nodemon, Bcrypt, JWT, MongoDB, Mongoose, HTML, CSS, among others...`
     ],
   },
-  {
-    cmd: 'diegorlb social',
-    txt: [
-      'Work in progress...'
-    ]
-  }
 ]

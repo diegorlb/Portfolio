@@ -16,12 +16,15 @@ export const NavbarContainer = styled.div`
 `
 
 export const NameContainer = styled.div`
-  &, &:before, &:after {
+  cursor: pointer;
+
+  &, &:before, &:after, & > a {
     height: 32px;
     color: white;
     font-size: 24px;
     font-weight: ${theme('fonts.weight.bold')};
     font-family: ${theme('fonts.type.Grotesk')};
+    text-decoration: none;
   }
 
   &:before, &:after {

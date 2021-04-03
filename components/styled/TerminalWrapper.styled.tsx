@@ -19,7 +19,7 @@ export const EntryContainer = styled(motion.div)`
 `
 
 const Text = styled.p`
-  font-size: 10pt;
+  font-size: 11pt;
   font-weight: ${theme('fonts.weight.light')};
   font-family: ${theme('fonts.type.Source')};
 `

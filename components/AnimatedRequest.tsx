@@ -15,7 +15,7 @@ export const AnimatedRequest: FunctionComponent<AnimatedRequestProps> = ({ cmd, 
 
   useInterval(() => {
     if(show) setCounter(prev => prev + 1)
-  }, 100, counter > cmd.length, () => callback(true))
+  }, 50, counter > cmd.length, () => callback(true))
  
   useEffect(() => {
     const timer = setTimeout(() => setShow(true), delay * 1000)

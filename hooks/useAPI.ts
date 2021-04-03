@@ -10,7 +10,7 @@ export type InfoType = {
 export const useAPI = () => {
   return {
     sendInfoData: async (info: InfoType) => {
-      console.log(await axios.post('/api/contact', info))
+      await axios.post('/api/contact', info)
     }
   }
 }

@@ -15,10 +15,10 @@ import { TitleBar } from './TitleBar'
 
 export const TerminalWrapper: FunctionComponent = () => {
   const Delays = useMemo(() => TerminalData.map((_, i, arr) => {
-    return arr.slice(0, i).reduce((acc, { cmd }) => acc + 0.1 * cmd.length, 0.4 * i)
+    return arr.slice(0, i).reduce((acc, { cmd }) => acc + 0.1 * cmd.length, 0.35 * i)
   }), [])
 
-  const TotalDelay = useMemo(() => Delays.reduce((acc, delay) => acc + delay, 0), [])
+  const TotalDelay = useMemo(() => Delays.reduce((acc, delay) => acc + delay, -1), [])
 
   return (
     <TerminalWindow
